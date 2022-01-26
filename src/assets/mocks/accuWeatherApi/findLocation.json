@@ -1,0 +1,15 @@
+{
+  "Version": 1,
+  "Key": "213225",
+  "Type": "City",
+  "Rank": 30,
+  "LocalizedName": "Jerusalem",
+  "Country": {
+    "ID": "IL",
+    "LocalizedName": "Israel"
+  },
+  "AdministrativeArea": {
+    "ID": "JM",
+    "LocalizedName": "Jerusalem"
+  }
+}

@@ -1,0 +1,22 @@
+<main>
+
+  <app-search-place
+    (placeSelected)="redirectToLocation($event)"
+  ></app-search-place>
+
+  <ng-container *ngIf="!notFound && (weather$ | async) as weather; else not_found">
+
+    <app-weather-card
+      [weatherData]="weather"
+      [isFavorite]="(isFavorite$ | async) || false"
+      (favoriteToggled)="toggleFavorite($event)"
+    ></app-weather-card>
+
+  </ng-container>
+
+  <ng-template #not_found>
+    <h1>Place not found</h1>
+  </ng-template>
+
+</main>
+

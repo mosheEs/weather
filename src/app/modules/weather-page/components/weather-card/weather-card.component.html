@@ -1,0 +1,32 @@
+<div id="wrapper">
+
+  <div id="header">
+    <div id="details">
+      <img>
+      <div>
+        <p>{{weatherData.locationName}}</p>
+        <p>{{weatherData.current.temp | temp}}</p>
+      </div>
+    </div>
+    <div id="favorite">
+      <button mat-icon-button color="warn"
+              [matTooltip]="isFavorite ? 'Remove from favorites' : 'Add to favorites'"
+              (click)="toggleFavorite()"
+      >
+        <mat-icon>{{isFavorite ? 'favorite' : 'favorite_border'}}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div id="text-box">
+    <h1>{{weatherData.current.text}}</h1>
+  </div>
+
+  <div id="forecast">
+    <app-daily-temp-card
+      *ngFor="let day of weatherData.forecast"
+      [dailyTemp]="day"
+    ></app-daily-temp-card>
+  </div>
+
+</div>
