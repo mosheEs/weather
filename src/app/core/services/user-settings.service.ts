@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {Injectable} from '@angular/core';
 import {TemperatureUnit} from "../models/temperature";
 
 @Injectable({
@@ -7,13 +6,19 @@ import {TemperatureUnit} from "../models/temperature";
 })
 export class UserSettingsService {
 
-  private _tempUnit = new BehaviorSubject<TemperatureUnit>("C");
-  public tempUnit = this._tempUnit.asObservable();
+  private readonly LS_TEMP_UNIT = 'tempUnit';
+
+  private _tempUnit = localStorage.getItem(this.LS_TEMP_UNIT);
+
+  get tempUnit(): TemperatureUnit {
+    return this._tempUnit === "F" ? "F" : "C";
+  }
+
+  set tempUnit(unit: TemperatureUnit) {
+    this._tempUnit = unit;
+    localStorage.setItem(this.LS_TEMP_UNIT, unit);
+  }
 
   constructor() { }
-
-  changeTempUnit(unit: TemperatureUnit) {
-    this._tempUnit.next(unit);
-  }
 
 }

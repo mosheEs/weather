@@ -1,3 +1,7 @@
-mat-toolbar {
+#main-toolbar {
   justify-content: space-between;
+}
+
+#sec-toolbar {
+  justify-content: flex-end;
 }

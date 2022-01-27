@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {AppPage} from "../../../app-routing.module";
 import {NavigationEnd, Router} from "@angular/router";
 import {filter, map} from "rxjs";
+import {UserSettingsService} from "../../services/user-settings.service";
+import {TemperatureUnit} from "../../models/temperature";
 
 @Component({
   selector: 'app-header',
@@ -32,8 +34,17 @@ export class HeaderComponent implements OnInit {
     }),
   );
 
+  get tempUnit() {
+    return this.userSettings.tempUnit;
+  }
+
+  set tempUnit(unit: TemperatureUnit) {
+    this.userSettings.tempUnit = unit;
+  }
+
   constructor(
     private router: Router,
+    private userSettings: UserSettingsService,
   ) { }
 
   ngOnInit(): void {}
