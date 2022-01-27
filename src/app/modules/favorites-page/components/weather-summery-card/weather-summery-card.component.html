@@ -1,0 +1,18 @@
+<div id="wrapper">
+
+  <ng-container *ngIf="weatherData; else no_data">
+    <div>
+      <h4>{{weatherData.locationName}}</h4>
+      <p>{{weatherData.current.temp | temp}}</p>
+    </div>
+
+    <div>
+      <p>{{weatherData.current.text}}</p>
+    </div>
+  </ng-container>
+
+  <ng-template #no_data>
+    <b>Failed to load weather data</b>
+  </ng-template>
+
+</div>

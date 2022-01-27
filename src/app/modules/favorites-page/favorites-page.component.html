@@ -1,1 +1,8 @@
-<p>favorites-page works!</p>
+<main>
+
+  <app-weather-summery-card
+    *ngFor="let favorite of favorites$ | async"
+    [weatherData]="favorite"
+  ></app-weather-summery-card>
+
+</main>
