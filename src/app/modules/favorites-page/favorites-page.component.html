@@ -1,8 +1,14 @@
 <main>
 
-  <app-weather-summery-card
-    *ngFor="let favorite of favorites$ | async"
-    [weatherData]="favorite"
-  ></app-weather-summery-card>
+  <div id="grid" *ngIf="favorites$ | async as favorites; else no_items">
+    <app-weather-summery-card
+      *ngFor="let favorite of favorites"
+      [weatherData]="favorite"
+    ></app-weather-summery-card>
+  </div>
+
+  <ng-template #no_items>
+    <p class="no-items">No favorites yet...</p>
+  </ng-template>
 
 </main>
